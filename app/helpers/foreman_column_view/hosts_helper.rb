@@ -2,12 +2,12 @@ module ForemanColumnView
   module HostsHelper
 
     def fcv_title
-      title = SETTINGS[:column_view][:title] || 'Domain' rescue 'Domain'
+      title = Setting[:column_title] || 'Domain'
       return title
     end 
 
     def fcv_content(host)
-      content = SETTINGS[:column_view][:content] || 'domain' rescue 'domain'
+      content = Setting[:column_content] || 'domain'
       if content =~ /(.*)\[(.*)\]/
         return host.send($1)[$2.gsub(/['"]/,'')]
       else
